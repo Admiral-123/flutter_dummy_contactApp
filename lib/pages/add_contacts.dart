@@ -1,4 +1,5 @@
 import 'package:contact_app/providers/db_provider.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -34,7 +35,8 @@ class AddContacts extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               controller: numController,
-              keyboardType: const TextInputType.numberWithOptions(),
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: false),
               decoration: const InputDecoration(
                   labelText: "number",
                   border: OutlineInputBorder(
@@ -47,7 +49,7 @@ class AddContacts extends StatelessWidget {
                 if (nameController.text != "" && numController.text != "") {
                   context.read<DBProvider>().addContactProv(
                       mname: nameController.text.toString(),
-                      mnum: numController.text.toString());
+                      mnum: numController.text.toString().trim());
 
                   Navigator.pop(context);
                 }

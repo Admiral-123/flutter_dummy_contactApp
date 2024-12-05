@@ -1,7 +1,8 @@
+import 'dart:async';
 import 'package:contact_app/pages/home.dart';
 import 'package:contact_app/providers/db_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
+import 'package:path/path.dart' as path;
 import 'package:provider/provider.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Contacts",
       theme: ThemeData(colorSchemeSeed: const Color.fromARGB(255, 254, 76, 76)),
-      home: const Home(),
+      home: const SplashScr(),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -34,7 +35,33 @@ class SplashScr extends StatefulWidget {
 
 class SplashScrState extends State<SplashScr> {
   @override
+  void initState() {
+    super.initState();
+
+    intro();
+  }
+
+  void intro() async {
+    Timer(const Duration(seconds: 2), () {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const Home()));
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.grey,
+        child: const Center(
+          child: Icon(
+            Icons.call,
+            size: 30.0,
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -36,7 +36,8 @@ class EditContacts extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               controller: numController,
-              keyboardType: const TextInputType.numberWithOptions(),
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: false),
               decoration: const InputDecoration(
                   labelText: "number",
                   border: OutlineInputBorder(
